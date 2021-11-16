@@ -1,0 +1,118 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+    <h:head>
+        <title>Venta de Medicamentos</title>
+        <f:event type="preRenderView" listener="#{detVentaC.listarVta()}" />
+    </h:head>
+    <h:body>
+
+
+        <center>
+            <h1>Consulta y detalle de Ventas realizadas</h1>
+        </center>
+
+        <center>
+
+
+
+            <p:growl id="mensaje" showDetail="true" />
+            <p:growl id="growl-sticky" for="sticky-key" showDetail="true" sticky="true" />
+
+            <h:form>
+                <p:panelMenu style="width:250px">
+                    <p:submenu label="Tablas Maestras" >
+                        <p:menuitem value="Vendedor" icon="pi pi-save" url="./faces/vendedor.xhtml" />
+                        <p:menuitem value="Cliente" icon="pi pi-save" url="./faces/cliente.xhtml" />
+                        <p:menuitem value="Medicamento" icon="pi pi-save" url="./faces/medicamento.xhtml" />
+                        <p:menuitem value="Proveedor" icon="pi pi-save" url="./faces/proveedor.xhtml" />
+                    </p:submenu>
+                    <p:separator />
+                    <p:submenu label="Tablas Transaccionales" >
+                        <p:menuitem value="Venta" icon="pi pi-save" url="./faces/BoletaDetalleV.xhtml" />
+                        <p:menuitem value="Venta Detalle" icon="pi pi-save" url="./faces/detVenta.xhtml" />
+                    </p:submenu>
+                </p:panelMenu>
+            </h:form>
+
+
+            <h:form id="form">
+
+
+                <p:dataTable id="tblVenta" var="product" value="#{detVentaC.lstVenta}" emptyMessage="Se tiene la lista sin ventas"
+                             selectionMode="single" selection="#{detVentaC.selectedVta}" rowKey="#{product.codDoc}" sortBy="#{product.monto}">
+                    <f:facet name="header">Ventas Realizadas </f:facet>
+                    <p:ajax event="rowSelect" listener="#{detVentaC.onRowSelect}" update="form:tblDetalle" />
+
+                    <p:column headerText="Ticket" sortBy="#{product.nroDoc}" filterBy="#{product.nroDoc}">
+                        <h:outputText value="#{product.nroDoc}" />
+                    </p:column>
+                    <p:column headerText="Fecha" sortBy="#{product.fecha}" filterBy="#{product.fecha}">
+                        <h:outputText value="#{product.fecha}" />
+                    </p:column>
+                    <p:column headerText="Cliente" sortBy="#{product.nombre}" filterBy="#{product.nombre}">
+                        <h:outputText value="#{product.nombre}" />
+                    </p:column>                    
+
+                    <p:column headerText="Total s/" sortBy="#{product.monto}">
+                        <h:outputText value="#{product.monto}" />
+                    </p:column>   
+
+
+                    <f:facet name="footer">
+                        Hay en total: #{fn:length(detVentaC.lstVenta)} registros de venta.
+                    </f:facet>
+                </p:dataTable>
+
+
+
+                <p:dataTable id="tblDetalle" var="detProduct" value="#{detVentaC.lstDetVenta}"  emptyMessage="Se tiene la lista sin detalle">
+                    <f:facet name="header">Detalle del ticket  </f:facet>
+                    <p:column headerText="Id" style="width: 5%;" >
+                        <h:outputText value="#{detProduct.codigoMed}" />
+                    </p:column>
+                    <p:column headerText="Comercial">
+                        <h:outputText value="#{detProduct.comercial}" />
+                    </p:column>
+                    <p:column headerText="Genérico">
+                        <h:outputText value="#{detProduct.generico}" />
+                    </p:column>
+                    <p:column headerText="Presentación">
+                        <h:outputText value="#{detProduct.presentacion}" />
+                    </p:column>
+                    <p:column headerText="Proveedor">
+                        <h:outputText value="#{detProduct.provAbr}" />
+                    </p:column>                                        
+                    <p:column headerText="Precio" style="width: 5%">
+                        <h:outputText value="#{detProduct.precio}" />
+                    </p:column>
+                    <p:column headerText="Cant." style="width: 5%;" >
+                        <h:outputText value="#{detProduct.cantidad}" />
+                    </p:column>
+                    <p:column headerText="SubTotal s/" style="width: 7%;" >
+                        <h:outputText value="#{detProduct.subtotal}" />
+                    </p:column>
+
+
+                    <f:facet name="footer">
+                        Hay en total #{fn:length(detVentaC.lstDetVenta)} medicamentos.
+                    </f:facet>
+
+                </p:dataTable>
+
+
+
+
+            </h:form>
+        </center>
+
+
+
+
+
+    </h:body>
+</html>
+

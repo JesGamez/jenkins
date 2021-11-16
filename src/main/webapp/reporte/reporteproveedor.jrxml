@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.17.0-6d93193241dd8cc42629e188b94f9e0bc5722efd  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f760bf17-8aa8-47a3-b319-54d43151e52b">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DbFarmavic"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT * FROM PROVEEDOR]]>
+	</queryString>
+	<field name="IDPROV" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="IDPROV"/>
+		<property name="com.jaspersoft.studio.field.label" value="IDPROV"/>
+	</field>
+	<field name="NOMPROV" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="NOMPROV"/>
+		<property name="com.jaspersoft.studio.field.label" value="NOMPROV"/>
+	</field>
+	<field name="RUCPROV" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="RUCPROV"/>
+		<property name="com.jaspersoft.studio.field.label" value="RUCPROV"/>
+	</field>
+	<field name="TELPROV" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="TELPROV"/>
+		<property name="com.jaspersoft.studio.field.label" value="TELPROV"/>
+	</field>
+	<field name="EMAPROV" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="EMAPROV"/>
+		<property name="com.jaspersoft.studio.field.label" value="EMAPROV"/>
+	</field>
+	<field name="TIPPROV" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="TIPPROV"/>
+		<property name="com.jaspersoft.studio.field.label" value="TIPPROV"/>
+	</field>
+	<field name="NCOMPROV" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="NCOMPROV"/>
+		<property name="com.jaspersoft.studio.field.label" value="NCOMPROV"/>
+	</field>
+	<field name="ABREPROV" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="ABREPROV"/>
+		<property name="com.jaspersoft.studio.field.label" value="ABREPROV"/>
+	</field>
+	<field name="DIRPROV" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="DIRPROV"/>
+		<property name="com.jaspersoft.studio.field.label" value="DIRPROV"/>
+	</field>
+	<field name="IDUBI" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="IDUBI"/>
+		<property name="com.jaspersoft.studio.field.label" value="IDUBI"/>
+	</field>
+	<field name="ESTPROV" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="ESTPROV"/>
+		<property name="com.jaspersoft.studio.field.label" value="ESTPROV"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<textField>
+				<reportElement x="180" y="30" width="200" height="30" uuid="77508100-917e-449c-9b0e-19b71f808e61"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["REPORTE DE PROVEEDOR"]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="60" height="30" uuid="0c54fab5-41a5-4118-bc9f-25db89d31426">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7acc4807-1f51-4005-9074-73202dd5d471"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[NOMPROV]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="70" y="0" width="70" height="30" uuid="75d51d7c-5b75-4939-97d2-b2ab5694e45e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5f2a0ad4-ebff-4799-9b53-1a4f8d9a0dac"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[RUCPROV]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="150" y="0" width="60" height="30" uuid="3e8c8c89-cc74-4286-be16-ff05669014fb">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="dbb717c0-ad52-4187-b907-2470e75b1f4e"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[TELPROV]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="220" y="0" width="60" height="30" uuid="9c28aa62-0520-4976-8eac-808a920bcae0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f25ad245-40d6-40b0-b155-b1d570b3ca68"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[EMAPROV]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="0" width="60" height="30" uuid="ac558567-66c9-41a3-8322-a9d68aacfdcb">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="bbd681ed-2bd8-4ec8-9188-06fd94601958"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[TIPPROV]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="360" y="0" width="70" height="30" uuid="6b97fa48-a3a0-4d38-b2ea-48e2520c16f2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="56dbedcf-5419-40ef-be81-54f10e57086e"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[NCOMPROV]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="440" y="0" width="55" height="30" uuid="f687d7b4-5181-4a7c-9b01-9843344de8cf">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="40e932b1-325e-4f40-b4d9-85f43c1db798"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[ABREPROV]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="500" y="0" width="50" height="30" uuid="67d9e3ca-8512-4109-961b-592f9fc82894">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5f6e799e-db70-419a-8a34-e36b766b005e"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[DIRPROV]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="10" width="60" height="30" uuid="2f006771-9f40-41ec-9104-5223e438e1e7">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7acc4807-1f51-4005-9074-73202dd5d471"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{NOMPROV}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="70" y="10" width="70" height="30" uuid="d1a28013-c3b2-4f94-b4d2-57ba897d9da3">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5f2a0ad4-ebff-4799-9b53-1a4f8d9a0dac"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{RUCPROV}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="150" y="10" width="60" height="30" uuid="bf7b4d52-a0b1-45ac-af71-baaed37949a8">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="dbb717c0-ad52-4187-b907-2470e75b1f4e"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{TELPROV}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="220" y="10" width="60" height="30" uuid="9ee97bbb-6a9c-4f50-a04f-7d693bfb71c2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f25ad245-40d6-40b0-b155-b1d570b3ca68"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{EMAPROV}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="290" y="10" width="60" height="30" uuid="88f0b326-55db-4335-81e9-365f525438c0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="bbd681ed-2bd8-4ec8-9188-06fd94601958"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{TIPPROV}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="360" y="10" width="70" height="30" uuid="33a92554-bb19-4456-8a1c-7b335c393c78">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="56dbedcf-5419-40ef-be81-54f10e57086e"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{NCOMPROV}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="442" y="10" width="60" height="30" uuid="49e75598-0875-4789-a023-7cfd887b2f3b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="40e932b1-325e-4f40-b4d9-85f43c1db798"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ABREPROV}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="502" y="10" width="50" height="30" uuid="c1204cb3-5ea3-408f-b0f4-629dbd6a443f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5f6e799e-db70-419a-8a34-e36b766b005e"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{DIRPROV}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

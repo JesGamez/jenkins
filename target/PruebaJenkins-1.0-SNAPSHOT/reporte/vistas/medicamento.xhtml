@@ -1,0 +1,283 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+    <h:head>
+        <title>Listado de Medicamentos</title>
+        <f:event listener="#{medicamentoC.listar()}" type="preRenderView" />
+    </h:head>
+    <h:body>
+<!--        <style>
+            body {background-color: #9999ff}
+        </style>-->
+        <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
+        <center>
+            <h1>Mantenimiento de Medicamentos</h1>
+        </center>
+
+        <p:growl id="mensaje" severity="info, fatal" showDetail="true" showSummary="true"  />
+        <p:growl id="growl-sticky" for="sticky-key" showDetail="true" sticky="true" />
+
+        <h:form id="menu" >
+            <p:panelMenu style="width:250px">
+                <p:submenu label="Tablas Maestras" >
+                    <p:menuitem value="Vendedor" icon="pi pi-save" url="./vendedor.xhtml" />
+                    <p:menuitem value="Cliente" icon="pi pi-save" url="./cliente.xhtml" />
+                    <p:menuitem value="Medicamento" icon="pi pi-save" url="./medicamento.xhtml" />
+                    <p:menuitem value="Proveedor" icon="pi pi-save" url="./proveedor.xhtml" />
+                </p:submenu>
+                <p:separator />
+                <p:submenu label="Tablas Transaccionales" >
+                    <p:menuitem value="Venta" icon="pi pi-save" url="./BoletaDetalleV.xhtml" />
+                </p:submenu>
+            </p:panelMenu>
+        </h:form>
+
+        <h:form id="form">
+            <center>
+                <!--        Formulario del Medicamentos    >-->  
+                <p:panelGrid columns="6" styleClass="showcase-text-align-left">
+                    <f:facet name= "header">INGRESAR DATOS DEL MEDICAMENTO</f:facet>
+
+                    <p:outputLabel for="presentacion" value="PRESENTACIÓN: " />  
+                    <p:inputText style="width: 230px" 
+                                 id="presentacion" value="#{medicamentoC.med.PRESMED}"
+                                 required="true" requiredMessage="Falta la Presentación"
+                                 maxlength="30" >
+                        <p:keyFilter regEx="/[A-z_ñ_á_é_í_ó_ú_Á_É_Í_Ó_Ú_' ']/" />
+                    </p:inputText>
+                    <p:message for="presentacion" display="text" />
+
+                    <p:outputLabel for="generico" value="GÉNERICO: " />  
+                    <p:inputText  style="width: 230px" 
+                                  id="generico" value="#{medicamentoC.med.GENMED}"
+                                  required="true" requiredMessage="Falta el Génerico"
+                                  maxlength="50" >
+                        <p:keyFilter regEx="/[A-z_ñ_á_é_í_ó_ú_Á_É_Í_Ó_Ú_' ']/" />
+                    </p:inputText>
+                    <p:message for="generico" display="text" />
+
+                    <p:outputLabel  for="comercial" value="COMERCIAL: " />  
+                    <p:inputText  style="width: 230px"
+                                  id="comercial" value="#{medicamentoC.med.COMMED}"
+                                  required="true" requiredMessage="Falta el Comercial"
+                                  maxlength="50" >
+                        <p:keyFilter regEx="/[A-z_ñ_á_é_í_ó_ú_Á_É_Í_Ó_Ú_' ']/" />
+                    </p:inputText>
+                    <p:message for="comercial" display="text" />
+
+                    <p:outputLabel for="precio" value="PRECIO: " />  
+                    <p:inputNumber style="width: 230px"
+                                   id="precio" value="#{medicamentoC.med.PRECMED}" 
+                                   maxlength="5"
+                                   required="true" requiredMessage="Ingrese el Precio">
+                        <p:keyFilter regEx="/[0-9]/" />
+                    </p:inputNumber>
+                    <p:message for="precio" display="text"/>
+
+                    <p:outputLabel for="vencimiento" value="VENCIMIENTO: "/>
+                    <p:calendar id="vencimiento" value="#{medicamentoC.med.FVMED}"
+                                pattern="yyyy/MM/dd" mask="true" navigator="true" mindate="@now"
+                                size="20" required="true" requiredMessage="Ingrese la F. Vencimiento">
+                        <p:keyFilter regEx="/[0-9]/" />
+                    </p:calendar>
+                    <p:message for="vencimiento" display="text"/>
+
+                    <p:outputLabel for="stock" value="STOCK: " />  
+                    <p:spinner style="width: 230px"
+                               id="stock" value="#{boletaC.boletaDetalle.CANTBODE}" 
+                               max="1000" min="1" maxlength="5"
+                               required="true" requiredMessage="Falta el Stock" >
+                        <p:keyFilter regEx="/[0-9]/" />
+                    </p:spinner>
+                    <p:message for="stock" display="text"/>
+
+                    <p:outputLabel  for="formula" value="FÓRMULA: " />  
+                    <p:inputText style="width: 230px" 
+                                 id="formula" value="#{medicamentoC.med.FORMED}"
+                                 required="true" requiredMessage="Ingrese la Fórmula"
+                                 maxlength="50" >
+                        <p:keyFilter regEx="/[A-z_ñ_á_é_í_ó_ú_Á_É_Í_Ó_Ú_' ']/" />
+                    </p:inputText>
+                    <p:message for="formula" display="text"/>
+
+                    <p:outputLabel for="lote" value="LOTE: " />  
+                    <p:inputText  style="width: 230px"
+                                  id="lote" value="#{medicamentoC.med.LOTMED}"
+                                  required="true" requiredMessage="Falta el Lote"
+                                  maxlength="12" >
+                        <p:keyFilter regEx="/[0-9]/" />
+                    </p:inputText>
+                    <p:message for="lote" display="text"/>
+
+                    <p:outputLabel for="proveedor" value="PROVEEDOR: " /> 
+                    <p:autoComplete style="width: 230px"
+                                    id="proveedor" value="#{medicamentoC.med.IDPROV}" completeMethod="#{medicamentoC.completeTextProveedor(query)}"
+                                    required="true" requiredMessage="Falta Proveedor" minQueryLength="1">
+                        <p:keyFilter regEx="/[A-z_ñ_á_é_í_ó_ú_Á_É_Í_Ó_Ú_' ']/" />
+                    </p:autoComplete>
+                    <p:message for="proveedor" display="text" />
+                </p:panelGrid>
+                <p:commandButton value="Registrar" actionListener="#{medicamentoC.registrar()}" update="form :tabla:tablaMedi mensaje"/>
+            </center>
+        </h:form>
+
+        <center >
+            <h:form >
+                <h:commandLink>
+                    <h:graphicImage url="./../imagenes/LOGO.png" width="50px"/>
+                    <p:dataExporter type="pdf" target=":tabla:tablaMedi" fileName="Listado de Medicamento" />
+                </h:commandLink>
+
+                <h:commandLink>
+                    <h:graphicImage url="./../imagenes/excel.jpg" height="60px" width="50px"/>
+                    <p:dataExporter type="xls" target=":tabla:tablaMedi" fileName="Listado de Medicamentos" />
+                </h:commandLink>
+            </h:form>
+        </center>
+
+
+        <h:form id="tabla" >
+            <center>
+                <p:dataTable var="tblmedi" id="tablaMedi" value="#{medicamentoC.listadomed}" rows="10"
+                             paginator="true" widgetVar="tblMedicamento" selection="#{medicamentoC.med}"
+                             resizableColumns="true" 
+                             selectionMode="single"
+                             rowKey="#{tblmedi.IDMED}"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                             rowsPerPageTemplate="5,10,{ShowAll|'All'}"
+                             rowStyleClass="registroVinculado">
+
+                    <f:facet name="header">
+                        <h:form >
+                            <p:commandButton value="GENERAR REPORTE" onclick="this.form.target = '_blank'"
+                                             ajax="false" style="float: right; background-color: gold; width: 160px" 
+                                             icon="pi pi-save" title="ReporteMedicamento" actionListener="#{medicamentoC.verReportePDFMEDI()}"/>
+                        </h:form>
+                        <p:outputPanel>
+                            <h:outputText value="Buscar:"/>
+                            <h:inputText id="globalFilter" onkeyup="PF('tblMedicamento').filter()" style="width:200px"/>
+                        </p:outputPanel>
+                    </f:facet>
+                    <f:facet name= "header"> LISTADO DE MEDICAMENTOS </f:facet>
+
+                    <p:column headerText="ID" style="width: 20px; alignment-adjust: central;column-rule-color: royalblue">
+                        <h:outputText value="#{tblmedi.IDMED}" />
+                    </p:column>
+
+                    <p:column headerText="PRESENTACIÓN" sortBy="#{tblmedi.PRESMED}" filterBy="#{tblmedi.PRESMED}" style="width: 100px">
+                        <h:outputText value="#{tblmedi.PRESMED}" />
+                    </p:column>
+
+                    <p:column headerText="GÉNERICO" sortBy="#{tblmedi.GENMED}" filterBy="#{tblmedi.GENMED}" style="width: 110px; alignment-adjust: central">
+                        <h:outputText value="#{tblmedi.GENMED}" />
+                    </p:column>
+
+                    <p:column headerText="COMERCIAL" sortBy="#{tblmedi.COMMED}" filterBy="#{tblmedi.COMMED}" style="width: 70px; alignment-adjust: central">
+                        <h:outputText value="#{tblmedi.COMMED}" />     
+                    </p:column>
+
+                    <p:column headerText="PRECIO" style="width: 45px; alignment-adjust: central">
+                        <h:outputText value="#{tblmedi.PRECMED}" >
+                        </h:outputText>
+                    </p:column>
+
+                    <p:column headerText="VENCIMINETO" sortBy="#{tblmedi.FVMED}" filterBy="#{tblmedi.FVMED}" style="width: 90px; alignment-adjust: central">
+                        <h:outputText value="#{tblmedi.FVMED}">
+                            <f:convertDateTime type="Date" pattern="dd/MMM/yyyy"/>
+                        </h:outputText>
+                    </p:column>
+
+                    <p:column headerText="STOCK" sortBy="#{tblmedi.STOCMED}" filterBy="#{tblmedi.STOCMED}" style="width: 40px; alignment-adjust: central">
+                        <h:outputText value="#{tblmedi.STOCMED}" />
+                    </p:column>
+
+                    <p:column headerText="FORMULA" sortBy="#{tblmedi.FORMED}" filterBy="#{tblmedi.FORMED}" style="width: 120px; alignment-adjust: central">
+                        <h:outputText value="#{tblmedi.FORMED}" />     
+                    </p:column>
+
+                    <p:column headerText="LOTE" sortBy="#{tblmedi.LOTMED}" filterBy="#{tblmedi.LOTMED}" style="width: 80px; alignment-adjust: central">
+                        <h:outputText value="#{tblmedi.LOTMED}" />
+                    </p:column>
+
+                    <p:column headerText="PROV" style="width: 30px; alignment-adjust: central" > 
+                        <h:outputText value="#{tblmedi.IDPROV}" /> 
+                    </p:column>
+
+                    <f:facet name="footer">
+                        EN TOTAL HAY #{fn:length(medicamentoC.listadomed)} REGISTROS.
+                    </f:facet>
+                </p:dataTable>
+            </center>
+
+            <p:contextMenu for="tablaMedi">
+                <p:menuitem value="Modificar" icon="pi pi-pencil" oncomplete="PF('wdlgDatos').show()" update=":formDialog">
+                </p:menuitem>
+                <p:menuitem value="Eliminar" icon="pi pi-trash" actionListener="#{medicamentoC.eliminar(tblmedi)}" update="tablaMedi mensaje">
+                    <p:confirm header="Confirmación" message="¿Deseas eliminar?"/>                         
+                </p:menuitem>
+            </p:contextMenu>
+
+        </h:form >
+
+
+
+        <p:dialog header="Datos del Medicamento" widgetVar="wdlgDatos" id="dlgDatos">
+            <h:form id="formDialog">
+                <p:panelGrid id="modificarMedicamento" columns="4">
+
+                    <p:outputLabel value="Presentación" /> 
+                    <p:inputText value="#{medicamentoC.med.PRESMED}" maxlength="30" />
+
+                    <p:outputLabel value="Generico" /> 
+                    <p:inputText value="#{medicamentoC.med.GENMED}" maxlength="1" />
+
+                    <p:outputLabel value="Comercial" /> 
+                    <p:inputText value="#{medicamentoC.med.COMMED}" maxlength="1" />
+
+                    <p:outputLabel value="Precio" />                     
+                    <p:inputNumber value="#{medicamentoC.med.PRECMED}" maxlength="5" />
+
+                    <p:outputLabel value="Vencimiento"/>
+                    <p:calendar id="vencimiento" value="#{medicamentoC.med.FVMED}"
+                                showOn="button" pattern="yyyy/MM/dd" mask="true" navigator="true" mindate="@now"
+                                size="20" required="true" requiredMessage="Ingrese el Vencimiento">
+                    </p:calendar>
+
+                    <p:outputLabel value="Stock " />  
+                    <p:inputNumber value="#{medicamentoC.med.STOCMED}" maxlength="5">
+                        <p:keyFilter regEx="/[0-9]/" />
+                    </p:inputNumber>
+
+                    <p:outputLabel value="Formula" /> 
+                    <p:inputText value="#{medicamentoC.med.FORMED}" maxlength="50" />
+
+                    <p:outputLabel value="Lote" /> 
+                    <p:inputText value="#{medicamentoC.med.LOTMED}" maxlength="11" />
+
+                    <p:outputLabel value="Proveedor" /> 
+                    <p:inputText value="#{medicamentoC.med.IDPROV}" maxlength="50" />
+
+
+
+                    <p:commandButton value="Modificar" actionListener="#{medicamentoC.modificar()}" 
+                                     update=":tabla:tablaMedi mensaje" oncomplete="PF('wdlgDatos').hide();" >
+                        <p:confirm header="Confirmación" message="¿Deseas Modificar?" icon="ui-icon-alert"/>
+                        <p:tooltip trackMouse="true"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="Cancelar" immediate="true" oncomplete="PF('wdlgDatos').hide();" />
+
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                        <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
+                    </p:confirmDialog>
+                </p:panelGrid>
+            </h:form>
+        </p:dialog>
+    </h:body>
+</html>
+

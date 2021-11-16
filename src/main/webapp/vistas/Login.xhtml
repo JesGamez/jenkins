@@ -1,0 +1,59 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script
+            src="https://kit.fontawesome.com/64d58efce2.js"
+            crossorigin="anonymous">
+        </script>
+        <link rel="stylesheet" href="./css/login.css" />
+        <title>FARMAVIC</title>
+    </h:head>
+    <h:body id="body">
+        <p:growl id="msj" showDetail="true" sticky="true">
+            <p:autoUpdate/>
+        </p:growl>
+        <div class="container">
+            <div class="forms-container">
+                <div class="signin-signup">
+                    <center>
+                        <h:form class="sign-in-form" id="frmLogin">
+                            <img src="imagenes/LogoVerical.png" class="image" alt="" style="width: 250px; height: 250px"/>
+                            <h3>Sistema de venta de medicamentos</h3>
+                            <h1>Bienvenido, inicie sesión</h1>
+                            <div class="input-field">
+                                <i class="fas fa-user"></i>
+                                <p:inputText value="#{usuarioC.user}" placeholder="Usuario" style="text-decoration: none;" required="true" maxlength="8" />
+                            </div>
+                            <div class="input-field">
+                                <i class="fas fa-lock"></i>
+                                <p:password value="#{usuarioC.pass}" placeholder="Contraseña" feedback="true" required="true" />
+                            </div>
+<!--                            <p:messages showDetail="true"/>
+                            <p:captcha label="Captcha" />-->
+                            <br />
+                            <p:commandButton value="Ingresar" action="#{usuarioC.login()}" class="btn btn-danger btn-md "  icon="fa fa-sign-in" iconPos="true" style="width: 280px"/>
+
+                            <p:blockUI block="body" widgetVar="body" >
+                                <p:graphicImage value="imagenes/count.gif"></p:graphicImage>
+                            </p:blockUI>
+                        </h:form>
+                    </center>
+                </div>
+            </div>
+
+<!--            <div class="panels-container">
+                <div class="panel left-panel">
+                    <div class="content">
+                        <h3>Sistema de venta de medicamentos</h3>
+                    </div>
+                    <img src="imagenes/log.svg" class="image" alt="" />
+                </div>
+            </div>-->
+        </div>
+
+    </h:body>
+</html>
